@@ -1,0 +1,19 @@
+1. 定义state状态
+    - app/import_process/agent/state.py
+
+2. 定义节点
+    - 7个节点
+    - app/import_process/agent/nodes下
+    - node_entry.py --> node_pdf_to_md.py --> node_md_img.py --> node_document_split.py --> node_item_name_recognition.py --> node_bge_embedding.py --> node_import_milvus.py
+
+3. 定义状态边和节点
+    - app/import_process/agent/main_graph.py
+    - 1. 初始化LangGraph状态图
+    - 2. 注册所有业务节点
+    - 3. 设置工作流入口节点
+    - 4. 定义条件路由函数（入口节点后的分支逻辑）
+    - 5. 注册静态顺序边（分支合并后的统一流程）
+    - 6. 编译工作流为可执行对象
+
+4. 验证结点和图关系
+    - test/test_graph_flow.py

@@ -1,0 +1,492 @@
+[
+  {
+    "question": "HAK 180 烫金机如何设置温度？",
+    "ground_truth_context": "HAK 180 烫金机通过操作面板上的 Temperature 按钮设置温度。按下 Temperature 键后，使用 +/- 键调节温度，默认建议设置在 110℃ 左右，设置完成后按 OK 确认。",
+    "ground_truth_answer": "按下面板上的 Temperature 按钮，使用 +/- 键将温度调节到所需值（建议 110℃），按 OK 确认即可。",
+    "expected_item_names": ["HAK 180 烫金机"],
+    "source_doc": "hak180使用说明书.pdf"
+  },
+  {
+    "question": "HAK 180 烫金机支持哪些纸张尺寸？",
+    "ground_truth_context": "HAK 180 烫金机支持 A4、A5、JIS B5、LTR、LGL 等纸张尺寸。最大纸张尺寸为 500mm × 500mm，最小纸张尺寸为 90mm × 55mm。支持纸张重量范围为 90g/m² 到 350g/m²。",
+    "ground_truth_answer": "HAK 180 支持 A4、A5、JIS B5、LTR、LGL 尺寸，纸张范围 90×55mm 到 500×500mm，重量 90-350g/m²。",
+    "expected_item_names": ["HAK 180 烫金机"],
+    "source_doc": "hak180使用说明书.pdf"
+  },
+  {
+    "question": "HAK 180 烫金机的 Foil Save 功能如何使用？",
+    "ground_truth_context": "Foil Save（烫金膜节约）功能位于操作面板上，标记为 Foil Save 按钮。开启后在菜单中设置烫金膜的节约区域，可设置 50mm-170mm 的局部烫金范围，按 OK 确认后按 Start 开始。",
+    "ground_truth_answer": "按下 Foil Save 按钮，进入菜单设置烫金膜节约范围（50mm-170mm），按 OK 确认，然后按 Start 开始打印。",
+    "expected_item_names": ["HAK 180 烫金机"],
+    "source_doc": "hak180使用说明书.pdf"
+  },
+  {
+    "question": "HAK 180 烫金机的操作面板上有哪些按键？",
+    "ground_truth_context": "HAK 180 烫金机操作面板包括：Favorite1/Favorite2 快捷键、Temperature 温度键、Menu 菜单键、OK 确认键、Stop/Exit 停止/退出键、Start 启动键、Clear/Back 清除/返回键、Foil Save 烫金膜节约键。另有 LED 指示灯用于显示 Foil Save、Cover Lock 和 Error 状态。",
+    "ground_truth_answer": "面板按键包括：Favorite1/2 快捷键、Temperature 温度键、Menu 菜单键、OK 键、Stop/Exit 键、Start 键、Clear/Back 键、Foil Save 键。LED 指示灯显示 Foil Save、Cover Lock 和 Error 状态。",
+    "expected_item_names": ["HAK 180 烫金机"],
+    "source_doc": "hak180使用说明书.pdf"
+  },
+  {
+    "question": "HAK 180 烫金机如何更换烫金膜？",
+    "ground_truth_context": "更换烫金膜时，先打开前盖，将旧膜卷取下。将新膜卷按照箭头指示方向装入，确保膜面平整。将膜穿过导向辊，合上前盖。如果 LCD 提示需要更换，按 Stop/Exit 清除提示。",
+    "ground_truth_answer": "打开前盖，取下旧膜卷，按箭头方向装入新膜卷，穿过导向辊确保平整，合上前盖即可。",
+    "expected_item_names": ["HAK 180 烫金机"],
+    "source_doc": "hak180使用说明书.pdf"
+  },
+  {
+    "question": "HAK 180 烫金机出现卡纸如何处理？",
+    "ground_truth_context": "卡纸时 LCD 会显示错误信息。按住 Stop/Exit 停止当前操作，打开前盖和后盖，缓慢取出卡纸。注意不要撕裂纸张。检查是否有碎片残留，合上所有盖板后重新启动。",
+    "ground_truth_answer": "按 Stop/Exit 停止，打开前后盖，缓慢取出卡纸，检查无碎片后合盖重启。",
+    "expected_item_names": ["HAK 180 烫金机"],
+    "source_doc": "hak180使用说明书.pdf"
+  },
+  {
+    "question": "HAK 180 烫金机的电源规格是多少？",
+    "ground_truth_context": "HAK 180 烫金机电源规格：220V-240V AC，50Hz/60Hz。功耗：打印时约 340W，待机约 7W，深度休眠约 0.04W。LCD 屏幕为 20字符×2行。",
+    "ground_truth_answer": "220V-240V AC，50/60Hz。功耗：340W（打印）/ 7W（待机）/ 0.04W（休眠）。",
+    "expected_item_names": ["HAK 180 烫金机"],
+    "source_doc": "hak180使用说明书.pdf"
+  },
+  {
+    "question": "HAK 180 烫金机支持的最大打印速度是多少？",
+    "ground_truth_context": "HAK 180 烫金机最大打印速度为 15 ppm（页/分钟），A4 纸张。首次打印输出时间约 30 秒。",
+    "ground_truth_answer": "最大打印速度为 15 ppm（A4 纸张），首张输出约 30 秒。",
+    "expected_item_names": ["HAK 180 烫金机"],
+    "source_doc": "hak180使用说明书.pdf"
+  },
+  {
+    "question": "HAK 180 烫金机如何通过快捷键 Favorite 保存常用设置？",
+    "ground_truth_context": "设置好常用参数（温度、纸张类型等）后，长按 Favorite1 或 Favorite2 键即可保存当前设置为快捷键。调用时直接按 Favorite1 或 Favorite2 键即可加载已保存的设置。按 OK 可查看快捷键 [#01] [#02] 的当前配置。",
+    "ground_truth_answer": "设置好参数后长按 Favorite1/Favorite2 保存，直接按快捷键即可调用已保存设置。",
+    "expected_item_names": ["HAK 180 烫金机"],
+    "source_doc": "hak180使用说明书.pdf"
+  },
+  {
+    "question": "HAK 180 烫金机的 Cover Lock 指示灯亮起是什么意思？",
+    "ground_truth_context": "Cover Lock LED 指示灯亮起表示机器前盖或上盖未正确关闭。需要检查所有盖板是否已完全合上并锁定。如果盖板已正确关闭但指示灯仍亮，可能需要检查盖板传感器是否故障。",
+    "ground_truth_answer": "表示前盖或上盖未正确关闭，检查并合上所有盖板即可。",
+    "expected_item_names": ["HAK 180 烫金机"],
+    "source_doc": "hak180使用说明书.pdf"
+  },
+  {
+    "question": "HAK 180 烫金机 Error LED 闪烁怎么处理？",
+    "ground_truth_context": "Error LED 闪烁表示机器发生错误。常见原因包括：卡纸、无烫金膜、盖板未关、温度异常等。先按 Stop/Exit 停止当前操作，查看 LCD 屏幕上显示的错误代码，参照第 53 页的错误代码表进行排查。",
+    "ground_truth_answer": "按 Stop/Exit 停止，查看 LCD 错误代码，参照手册第 53 页排查。常见原因包括卡纸、无膜、盖板未关。",
+    "expected_item_names": ["HAK 180 烫金机"],
+    "source_doc": "hak180使用说明书.pdf"
+  },
+  {
+    "question": "HAK 180 烫金机如何清洁内部？",
+    "ground_truth_context": "定期清洁可保持 HAK 180 烫金机的最佳性能。先关闭电源并拔掉电源线。打开前盖和后盖，使用干燥的无绒软布擦拭内部滚筒和纸张通道。注意不要触摸加热部件。建议每打印 5000 页清洁一次。",
+    "ground_truth_answer": "关闭电源拔掉电源线，打开前后盖，用干燥无绒软布擦拭滚筒和纸道，避免触摸加热部件。每 5000 页清洁一次。",
+    "expected_item_names": ["HAK 180 烫金机"],
+    "source_doc": "hak180使用说明书.pdf"
+  },
+  {
+    "question": "HAK 180 安全手册中关于烫金机使用的安全注意事项有哪些？",
+    "ground_truth_context": "HAK 180 烫金机安全注意事项包括：使用 220V-240V 电源、不要在潮湿环境使用、不要堵塞通风口、不要自行拆卸外壳、更换部件时使用 Brother 原装配件、机器运行时不要触摸加热区域、儿童需在成人监护下使用。",
+    "ground_truth_answer": "使用 220-240V 电源，避免潮湿环境，不堵塞通风口，不自行拆卸，使用 Brother 原装配件，运行时勿触加热区。",
+    "expected_item_names": ["HAK 180 烫金机"],
+    "source_doc": "hak180产品安全手册.pdf"
+  },
+  {
+    "question": "HAK 180 烫金机回收时需要注意什么？",
+    "ground_truth_context": "HAK 180 烫金机回收时应遵守当地电子废弃物处理规定。Brother 公司参与 WEEE（废弃电子电气设备）回收计划。产品中包含可回收材料，在生命周期结束时不要作为未分类的城市垃圾处理。",
+    "ground_truth_answer": "遵守当地 WEEE 电子废弃物处理规定，Brother 参与回收计划，勿作为未分类垃圾处理。",
+    "expected_item_names": ["HAK 180 烫金机"],
+    "source_doc": "hak180产品安全手册.pdf"
+  },
+  {
+    "question": "H3C ER2100 企业级路由器支持哪些上网方式？",
+    "ground_truth_context": "H3C ER2100 企业级路由器支持多种上网方式：静态IP地址、动态IP地址（DHCP）、PPPoE拨号、PPTP、L2TP。用户可根据宽带服务商提供的接入方式进行选择。",
+    "ground_truth_answer": "支持静态IP、动态IP(DHCP)、PPPoE拨号、PPTP、L2TP 五种上网方式。",
+    "expected_item_names": ["H3C ER2100 企业级路由器"],
+    "source_doc": "H3C ER2100企业级路由器 用户手册-6W104-整本手册.pdf"
+  },
+  {
+    "question": "H3C ER2100 路由器如何配置 VLAN？",
+    "ground_truth_context": "在 H3C ER2100 路由器上配置 VLAN：进入 Web 管理界面，选择「网络配置」→「VLAN 设置」，点击新建 VLAN，输入 VLAN ID 和名称，将指定端口加入该 VLAN，可选择 Access 或 Trunk 端口类型。",
+    "ground_truth_answer": "进入 Web 管理界面，选择「网络配置→VLAN 设置」，新建 VLAN 并指定 ID，将端口加入该 VLAN 并设置端口类型（Access/Trunk）。",
+    "expected_item_names": ["H3C ER2100 企业级路由器"],
+    "source_doc": "H3C ER2100企业级路由器 用户手册-6W104-整本手册.pdf"
+  },
+  {
+    "question": "H3C MER 系列路由器如何进行流量控制？",
+    "ground_truth_context": "H3C MER 系列路由器支持基于 IP 的流量控制功能。在 Web 管理界面中进入「QoS 配置」→「流量控制」，可对指定 IP 或 IP 段设置上行/下行带宽限制，支持优先级的设置，确保关键业务带宽。",
+    "ground_truth_answer": "在 Web 管理界面进入「QoS 配置→流量控制」，对指定 IP 或 IP 段设置上下行带宽限制和优先级。",
+    "expected_item_names": ["H3C MER系列路由器"],
+    "source_doc": "H3C MER系列路由器 用户手册-R0821-6W105-整本手册.pdf"
+  },
+  {
+    "question": "H3C MSR 系列路由器如何配置 IPsec VPN？",
+    "ground_truth_context": "H3C MSR 系列路由器配置 IPsec VPN：进入 Web 配置指导中的「VPN 配置」→「IPsec」，创建 IPsec 策略，配置 IKE 协商参数（包括认证算法、加密算法、DH 组），指定对端设备 IP 地址和预共享密钥，绑定需要保护的数据流。",
+    "ground_truth_answer": "进入「VPN 配置→IPsec」，创建 IPsec 策略，配置 IKE 参数（认证/加密算法、DH 组），指定对端 IP 和预共享密钥，绑定数据流。",
+    "expected_item_names": ["H3C MSR系列开放多业务路由器"],
+    "source_doc": "H3C MSR系列开放多业务路由器 Web配置指导(V7)-R6728-6W102-整本手册.pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B3-410 的指纹识别功能如何使用？",
+    "ground_truth_context": "HUAWEI MateBook B3-410 的指纹识别模块集成在电源键上。首次使用时，进入「设置」→「账户」→「登录选项」→「指纹识别(Windows Hello)」，点击「添加」后按提示录入指纹。录入后可通过指纹开机并登录系统。",
+    "ground_truth_answer": "进入「设置→账户→登录选项→指纹识别(Windows Hello)」，点击「添加」录入指纹，之后可用指纹开机并登录。",
+    "expected_item_names": ["HUAWEI MateBook B3-410"],
+    "source_doc": "HUAWEI MateBook B3-410&B3-510 用户手册-(03,zh-cn,Boh&Nbl,HUAWEI).pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B5-420 的充电注意事项有哪些？",
+    "ground_truth_context": "HUAWEI MateBook B5-420 充电注意事项：使用标配的 USB-C 充电器和数据线，支持 65W 快充。充电时环境温度应在 0℃~35℃ 之间。建议电池电量低于 20% 时及时充电，避免过度放电影响电池寿命。长时间不使用时，建议保持 50%~60% 电量存放。",
+    "ground_truth_answer": "使用标配 USB-C 65W 充电器，环境温度 0-35℃，低于 20% 及时充电，长期不用时保持 50-60% 电量。",
+    "expected_item_names": ["HUAWEI MateBook B5-420"],
+    "source_doc": "HUAWEI MateBook B5-420 用户手册-(05,zh-cn,KLV&KLVC&KLCZ).pdf"
+  },
+  {
+    "question": "HUAWEI MateStation B515 的硬盘接口类型是什么？",
+    "ground_truth_context": "HUAWEI MateStation B515 支持 M.2 NVMe PCIe SSD 和 2.5 英寸 SATA HDD 双硬盘接口。标配为 512GB M.2 NVMe PCIe SSD，可额外扩展 1TB 2.5 英寸 SATA 硬盘。",
+    "ground_truth_answer": "支持 M.2 NVMe PCIe SSD（标配 512GB）和 2.5 英寸 SATA HDD（可扩展 1TB）双接口。",
+    "expected_item_names": ["HUAWEI MateStation B515"],
+    "source_doc": "HUAWEI MateStation B515 用户手册-(PanguL,Windows11_02,zh-cn).pdf"
+  },
+  {
+    "question": "HUAWEI PixLab B5 打印机如何连接 Wi-Fi？",
+    "ground_truth_context": "HUAWEI PixLab B5 打印机支持通过华为智慧生活 App 进行 Wi-Fi 配置。下载 App 后，确保手机连接到 2.4GHz Wi-Fi 网络，在 App 中点击添加设备，扫描打印机上的二维码，按照提示完成网络配置。支持 2.4GHz 和 5GHz 双频段。",
+    "ground_truth_answer": "下载华为智慧生活 App，确保手机连接 2.4GHz Wi-Fi，在 App 中添加设备并扫描打印机二维码完成配置。支持 2.4G/5G 双频。",
+    "expected_item_names": ["HUAWEI PixLab B5"],
+    "source_doc": "HUAWEI PixLab B5 用户指南-(CV81Z,06,zh-cn).pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B3-510 的屏幕规格是什么？",
+    "ground_truth_context": "HUAWEI MateBook B3-510 配备 15.6 英寸 IPS 屏幕，分辨率 1920×1080（FHD），屏幕比例为 16:9，亮度 250 尼特，色域 45% NTSC。",
+    "ground_truth_answer": "15.6 英寸 IPS，1920×1080（FHD），16:9 比例，亮度 250 尼特，45% NTSC 色域。",
+    "expected_item_names": ["HUAWEI MateBook B3-510"],
+    "source_doc": "HUAWEI MateBook B3-410&B3-510 用户手册-(03,zh-cn,Boh&Nbl,HUAWEI).pdf"
+  },
+  {
+    "question": "H3C LA2608 室内无线网关支持哪些无线标准？",
+    "ground_truth_context": "H3C LA2608 室内无线网关支持 IEEE 802.11a/b/g/n/ac/ax 无线标准，双频并发（2.4GHz 和 5GHz），最大接入速率 1800Mbps。支持 MU-MIMO 和 OFDMA 技术。",
+    "ground_truth_answer": "支持 802.11a/b/g/n/ac/ax 标准，双频并发（2.4G/5G），最大速率 1800Mbps，支持 MU-MIMO 和 OFDMA。",
+    "expected_item_names": ["H3C LA2608 室内无线网关"],
+    "source_doc": "H3C LA2608室内无线网关 用户手册-6W100-整本手册.pdf"
+  },
+  {
+    "question": "H3C NER214W 路由器如何恢复出厂设置？",
+    "ground_truth_context": "H3C NER214W 路由器恢复出厂设置有两种方法：1）在设备通电状态下，使用尖状物按住 RESET 孔约 5 秒以上，待系统指示灯闪烁后松开；2）在 Web 管理界面中进入「系统工具」→「恢复出厂设置」点击确认。恢复后所有配置将被清除，设备重启。",
+    "ground_truth_answer": "方法1：通电后按住 RESET 孔 5 秒以上。方法2：Web 管理界面进入「系统工具→恢复出厂设置」。恢复后配置清除设备重启。",
+    "expected_item_names": ["H3C NER214W 路由器"],
+    "source_doc": "H3C NER214W路由器 用户手册-6W101-整本手册.pdf"
+  },
+  {
+    "question": "H3C NR-1200W 企业级无线路由器的最大带机量是多少？",
+    "ground_truth_context": "H3C NR-1200W 企业级无线宽带路由器支持最大 1200 台终端同时接入。推荐带机量为 100-200 台，以保证网络稳定性和性能。支持 2.4GHz 和 5GHz 双频并发。",
+    "ground_truth_answer": "最大支持 1200 台终端接入，推荐带机量 100-200 台，双频并发（2.4G/5G）。",
+    "expected_item_names": ["H3C NR-1200W企业级无线宽带路由器"],
+    "source_doc": "H3C NR-1200W企业级无线宽带路由器 用户手册-5W100-整本手册.pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B7-420 支持哪些外设接口？",
+    "ground_truth_context": "HUAWEI MateBook B7-420 接口配置：2×USB-C（支持数据传输、充电和 DisplayPort），1×HDMI，1×3.5mm 耳机麦克风二合一接口。无传统 USB-A 接口，需要使用扩展坞。",
+    "ground_truth_answer": "2×USB-C（数据/充电/DP）、1×HDMI、1×3.5mm 耳机口。无 USB-A，需用扩展坞。",
+    "expected_item_names": ["HUAWEI MateBook B7-420"],
+    "source_doc": "HUAWEI MateBook B7-420 用户指南-(MRGFZ,Windows11_02,zh-cn).pdf"
+  },
+  {
+    "question": "Aolynk CB304n Cable 网桥如何配置 IP 地址？",
+    "ground_truth_context": "Aolynk CB304n Cable 网桥默认 IP 地址为 192.168.100.1。可通过 Web 界面登录后进入「网络配置」→「IP 配置」修改 IP 地址、子网掩码和默认网关。支持静态 IP 和 DHCP 客户端两种模式。",
+    "ground_truth_answer": "默认 IP 192.168.100.1，登录 Web 后进入「网络配置→IP 配置」修改，支持静态 IP 和 DHCP 客户端模式。",
+    "expected_item_names": ["Aolynk CB304n Cable网桥"],
+    "source_doc": "Aolynk CB304n Cable网桥 用户手册-5W100-整本手册.pdf"
+  },
+  {
+    "question": "HUAWEI MateStation S 12代酷睿版的内存规格是什么？",
+    "ground_truth_context": "HUAWEI MateStation S 12代酷睿版配备 DDR4 3200MHz 双通道内存，最大支持 32GB（2×16GB）。标配 8GB 或 16GB，有两个 SO-DIMM 插槽，支持用户自行升级。",
+    "ground_truth_answer": "DDR4 3200MHz 双通道，最大 32GB（2×16GB），标配 8/16GB，两个 SO-DIMM 插槽支持升级。",
+    "expected_item_names": ["HUAWEI MateStation S 12代酷睿版"],
+    "source_doc": "HUAWEI MateStation S 12代酷睿版 用户指南-(PUC,Windows11_02,zh-cn).pdf"
+  },
+  {
+    "question": "H3C UG 系列路由器如何配置端口映射？",
+    "ground_truth_context": "H3C UG 系列路由器端口映射配置：在 Web 管理界面中进入「高级设置」→「端口映射」，点击添加新条目，填写外部端口、内部 IP 地址、内部端口和协议类型（TCP/UDP/全部），保存后生效。",
+    "ground_truth_answer": "进入 Web 管理「高级设置→端口映射」，添加新条目并填写外部端口、内部IP、内部端口和协议类型后保存。",
+    "expected_item_names": ["H3C UG系列路由器"],
+    "source_doc": "H3C UG系列路由器 用户手册-R0130-6W102-整本手册.pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B5-430 的电池容量是多少？",
+    "ground_truth_context": "HUAWEI MateBook B5-430 内置 56Wh 锂聚合物电池，支持 65W USB-C 快充，30 分钟可充至约 50%。本地视频播放最长可达 11 小时，日常办公约 8 小时。",
+    "ground_truth_answer": "56Wh 锂聚合物电池，支持 65W USB-C 快充，30 分钟充至 50%，视频播放续航约 11 小时。",
+    "expected_item_names": ["HUAWEI MateBook B5-430"],
+    "source_doc": "HUAWEI MateBook B5-430 用户手册-(03,zh-cn,KelvinDZ).pdf"
+  },
+  {
+    "question": "H3C MSR WiNet 系列云简路由器如何通过云平台管理？",
+    "ground_truth_context": "H3C MSR WiNet 系列云简路由器支持通过 H3C 云简网络平台进行远程管理。设备上线后自动注册到云平台，管理员可通过 Web 或手机 App 登录 cloudnet.h3c.com 进行远程配置、故障诊断、性能监控和固件升级。",
+    "ground_truth_answer": "设备上线后自动注册到 H3C 云简网络平台，管理员通过 cloudnet.h3c.com 或 App 远程配置、诊断、监控和升级。",
+    "expected_item_names": ["H3C MSR WiNet系列云简路由器"],
+    "source_doc": "H3C MSR WiNet系列云简路由器 用户手册-R0821-6W100-整本手册.pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B3-430 的摄像头如何开启？",
+    "ground_truth_context": "HUAWEI MateBook B3-430 配备隐藏式摄像头，位于键盘 F6 和 F7 键之间。按一下摄像头按键即可弹出摄像头模块。摄像头支持 720P 高清视频通话。合上摄像头时按回原位即可收回。",
+    "ground_truth_answer": "按 F6 和 F7 键之间的摄像头按键弹出摄像头，支持 720P 高清视频通话，按回收回。",
+    "expected_item_names": ["HUAWEI MateBook B3-430"],
+    "source_doc": "HUAWEI MateBook B3-430 用户指南-(NFZ,Windows11_02,zh-cn).pdf"
+  },
+  {
+    "question": "H3C MSR-XS 系列路由器支持哪些 WAN 接入方式？",
+    "ground_truth_context": "H3C MSR-XS 系列路由器支持多种 WAN 接入方式：光纤接入（通过 SFP 模块）、以太网接入、ADSL/VDSL 接入（通过 VDSL 模块）、4G/5G 无线接入（通过 LTE/5G 模块）。支持双链路冗余备份。",
+    "ground_truth_answer": "支持光纤（SFP）、以太网、ADSL/VDSL、4G/5G 无线接入，支持双链路冗余备份。",
+    "expected_item_names": ["H3C MSR-XS系列路由器"],
+    "source_doc": "H3C MSR-XS系列路由器 用户手册-R0821-6W100-整本手册.pdf"
+  },
+  {
+    "question": "Aolynk CC 系列 Cable 网络集中器如何管理终端设备？",
+    "ground_truth_context": "Aolynk CC 系列室内型 Cable 网络集中器支持通过 Web 界面管理终端设备。登录管理界面后进入「终端管理」，可查看在线设备列表、设备 MAC 地址、IP 地址分配情况，支持对终端进行禁用/启用、带宽限制和访问控制。",
+    "ground_truth_answer": "登录 Web 管理界面进入「终端管理」，可查看在线设备列表，支持禁用/启用、带宽限制和访问控制。",
+    "expected_item_names": ["Aolynk CC系列室内型Cable网络集中器"],
+    "source_doc": "Aolynk CC系列室内型Cable网络集中器 用户手册-6W202-整本手册.pdf"
+  },
+  {
+    "question": "HL-3070 打印机如何安装驱动程序？",
+    "ground_truth_context": "HL-3070 打印机驱动安装：从 Brother 官方网站 support.brother.com 下载对应操作系统的最新驱动程序。运行安装程序，选择 USB 连接或网络连接，按照向导提示完成安装。注意安装过程中保持打印机电源开启。",
+    "ground_truth_answer": "从 support.brother.com 下载对应驱动，运行安装程序选择 USB 或网络连接，按向导完成安装，全程保持打印机开机。",
+    "expected_item_names": ["HL-3070 打印机"],
+    "source_doc": "hl3070使用说明书.pdf"
+  },
+  {
+    "question": "HL-3070 打印机的耗材型号是什么？",
+    "ground_truth_context": "HL-3070 打印机使用 TN-2225 黑色墨粉盒和 DR-2225 硒鼓单元。TN-2225 墨粉盒可打印约 2600 页（A4 纸 5% 覆盖率），DR-2225 硒鼓单元可打印约 12000 页。",
+    "ground_truth_answer": "墨粉盒 TN-2225（约 2600 页），硒鼓 DR-2225（约 12000 页）。",
+    "expected_item_names": ["HL-3070 打印机"],
+    "source_doc": "hl3070使用说明书.pdf"
+  },
+  {
+    "question": "HL-3070 打印机如何解决卡纸问题？",
+    "ground_truth_context": "HL-3070 打印机卡纸处理步骤：1）打开前盖并取出墨粉盒和硒鼓单元；2）从机器内部缓慢取出卡纸；3）检查进纸轮区域是否有纸屑；4）重新安装硒鼓和墨粉盒；5）合上前盖。如果频繁卡纸，检查纸张是否符合规格（80g/m² A4）。",
+    "ground_truth_answer": "打开前盖取出墨粉盒和硒鼓，从内部取出卡纸，检查纸屑后装回硒鼓和墨粉盒合盖。频繁卡纸需检查纸张规格。",
+    "expected_item_names": ["HL-3070 打印机"],
+    "source_doc": "hl3070使用说明书.pdf"
+  },
+  {
+    "question": "HL-3040 打印机如何配置网络打印？",
+    "ground_truth_context": "HL-3040 网络说明书指出：将打印机通过网线连接到路由器，确保打印机 IP 地址与电脑在同一网段。可在打印机面板上设置 IP 地址（按 Menu→网络→TCP/IP→IP 地址），或通过 BRAdmin Light 软件自动搜索配置。",
+    "ground_truth_answer": "通过网线连接路由器，在面板 Menu→网络→TCP/IP 设置 IP 地址，或使用 BRAdmin Light 软件自动配置。",
+    "expected_item_names": ["HL-3040 打印机"],
+    "source_doc": "hl3040网络说明书.pdf"
+  },
+  {
+    "question": "HAK 180 烫金机的最大月打印负荷是多少？",
+    "ground_truth_context": "HAK 180 烫金机的最大月打印负荷为 80,000 页（基于 Brother 内部测试方法）。建议月打印量不超过此数值以保证设备寿命。",
+    "ground_truth_answer": "最大月打印负荷 80,000 页。",
+    "expected_item_names": ["HAK 180 烫金机"],
+    "source_doc": "hak180使用说明书.pdf"
+  },
+  {
+    "question": "H3C ER2100 路由器如何限制特定网站访问？",
+    "ground_truth_context": "H3C ER2100 路由器 URL 过滤配置：在 Web 管理界面中进入「安全设置」→「URL 过滤」，启用 URL 过滤功能，可选择黑名单模式（禁止访问列表中网站）或白名单模式（仅允许访问列表中网站）。支持关键字和完整 URL 匹配。",
+    "ground_truth_answer": "在 Web 管理进入「安全设置→URL 过滤」，启用后选择黑名单或白名单模式，支持关键字和完整 URL 匹配。",
+    "expected_item_names": ["H3C ER2100 企业级路由器"],
+    "source_doc": "H3C ER2100企业级路由器 用户手册-6W104-整本手册.pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B5-440 是否支持触控屏？",
+    "ground_truth_context": "HUAWEI MateBook B5-440 支持 10 点触控屏幕，配备 14 英寸 IPS 触控屏，分辨率为 2160×1440，支持华为多屏协同功能，可与华为手机进行文件拖拽传输。",
+    "ground_truth_answer": "支持 10 点触控，14 英寸 IPS 2160×1440，支持华为多屏协同与手机文件拖拽。",
+    "expected_item_names": ["HUAWEI MateBook B5-440"],
+    "source_doc": "HUAWEI MateBook B5-440 用户指南-(KLVFZ,Windows11_02,zh-cn).pdf"
+  },
+  {
+    "question": "H3C NER214W 路由器的无线安全设置有哪些？",
+    "ground_truth_context": "H3C NER214W 路由器支持多种无线安全加密方式：WPA2-PSK（推荐）、WPA3-SAE、WPA2/WPA3 混合模式。支持隐藏 SSID、MAC 地址过滤、无线客户端隔离功能。建议开启 WPA2-PSK AES 加密以保证安全性。",
+    "ground_truth_answer": "支持 WPA2-PSK、WPA3-SAE、混合模式，支持隐藏 SSID、MAC 过滤、客户端隔离，推荐 WPA2-PSK AES。",
+    "expected_item_names": ["H3C NER214W 路由器"],
+    "source_doc": "H3C NER214W路由器 用户手册-6W101-整本手册.pdf"
+  },
+  {
+    "question": "HUAWEI MateStation B520 的接口配置有哪些？",
+    "ground_truth_context": "HUAWEI MateStation B520 前面板接口：2×USB 3.2 Gen1、1×USB-C（支持快充）、1×3.5mm 耳机麦克风二合一。后置接口：2×USB 3.2 Gen1、2×USB 2.0、1×HDMI、1×VGA、1×RJ45 千兆网口、1×串口。",
+    "ground_truth_answer": "前置：2×USB 3.2、1×USB-C、1×耳机口。后置：2×USB 3.2、2×USB 2.0、1×HDMI、1×VGA、1×千兆网口、1×串口。",
+    "expected_item_names": ["HUAWEI Matestation B520"],
+    "source_doc": "HUAWEI Matestation B520 用户手册-(PanguBZ,Windows11_02,zh-cn).pdf"
+  },
+  {
+    "question": "H3C MER 系列路由器如何配置 DDNS？",
+    "ground_truth_context": "H3C MER 系列路由器 DDNS 配置：进入 Web 管理「高级服务」→「DDNS」，启用 DDNS 功能，选择服务提供商（如花生壳、DynDNS），填写注册的用户名、密码和域名，设置更新间隔时间，保存后生效。",
+    "ground_truth_answer": "进入「高级服务→DDNS」，启用并选择服务商，填写用户名、密码和域名，设置更新间隔后保存。",
+    "expected_item_names": ["H3C MER系列路由器"],
+    "source_doc": "H3C MER系列路由器 用户手册-R0821-6W105-整本手册.pdf"
+  },
+  {
+    "question": "HUAWEI PixLab B5 打印机的月打印负荷是多少？",
+    "ground_truth_context": "HUAWEI PixLab B5 打印机的最大月打印负荷为 20,000 页，推荐月打印量 200-2,500 页以满足最佳性能和打印质量。",
+    "ground_truth_answer": "最大月负荷 20,000 页，推荐 200-2,500 页/月。",
+    "expected_item_names": ["HUAWEI PixLab B5"],
+    "source_doc": "HUAWEI PixLab B5 用户指南-(CV81Z,06,zh-cn).pdf"
+  },
+  {
+    "question": "H3C MSR 系列路由器如何配置静态路由？",
+    "ground_truth_context": "H3C MSR 系列路由器静态路由配置：在 Web 配置界面中进入「路由配置」→「静态路由」，点击新建，填写目的网络地址、掩码长度、下一跳 IP 地址和出接口，可选择优先级（1-255，越小优先级越高），确认保存。",
+    "ground_truth_answer": "在 Web 管理进入「路由配置→静态路由」，新建并填写目的网络、掩码、下一跳 IP、出接口，设置优先级后保存。",
+    "expected_item_names": ["H3C MSR系列开放多业务路由器"],
+    "source_doc": "H3C MSR系列开放多业务路由器 Web配置指导(V7)-R6728-6W102-整本手册.pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B5-330 如何开启多屏协同？",
+    "ground_truth_context": "HUAWEI MateBook B5-330 的多屏协同功能：确保手机和电脑连接同一 Wi-Fi，开启蓝牙和 NFC。用手机背部 NFC 区域触碰电脑触控板下方的 Huawei Share 标签，或在电脑管家中选择「多屏协同」，手机会镜像到电脑屏幕上。",
+    "ground_truth_answer": "手机和电脑连同一 Wi-Fi，开启蓝牙和 NFC，手机背部触碰 Huawei Share 标签，或在电脑管家选「多屏协同」。",
+    "expected_item_names": ["HUAWEI MateBook B5-330"],
+    "source_doc": "HUAWEI MateBook B5-330 用户指南-(WRTDZ-WFH9&WFE9,Windows11_01,zh-cn).pdf"
+  },
+  {
+    "question": "HL-3070 打印机如何清洁硒鼓单元？",
+    "ground_truth_context": "HL-3070 打印机硒鼓清洁方法：取出硒鼓单元，水平放置。轻轻左右滑动绿色滑块数次，清理硒鼓表面灰尘。将滑块归位后重新安装硒鼓单元。注意不要触碰硒鼓表面感光层。",
+    "ground_truth_answer": "取出硒鼓水平放置，左右滑动绿色清洁滑块数次，归位后重新安装。勿碰感光层。",
+    "expected_item_names": ["HL-3070 打印机"],
+    "source_doc": "hl3070使用说明书.pdf"
+  },
+  {
+    "question": "H3C LA2608 室内无线网关如何配置访客网络？",
+    "ground_truth_context": "H3C LA2608 无线网关访客网络配置：在 Web 管理界面「无线配置」→「访客网络」，启用访客 Wi-Fi，设置单独的 SSID 名称和密码。访客网络可限制访问内部网络资源，仅提供互联网访问权限。",
+    "ground_truth_answer": "在 Web 管理「无线配置→访客网络」，启用并设置单独 SSID 和密码，访客网络仅限互联网访问，隔离内网。",
+    "expected_item_names": ["H3C LA2608 室内无线网关"],
+    "source_doc": "H3C LA2608室内无线网关 用户手册-6W100-整本手册.pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B7-410 的屏幕特点是什么？",
+    "ground_truth_context": "HUAWEI MateBook B7-410 配备 13.9 英寸 3:2 比例 LTPS 屏幕，分辨率 3000×2000，100% sRGB 色域，亮度 450 尼特，支持十点触控。3:2 比例相比传统 16:9 在办公文档处理时显示更多内容。",
+    "ground_truth_answer": "13.9 英寸 3:2 LTPS 屏，3000×2000，100% sRGB，亮度 450 尼特，支持触控。3:2 比例办公更优。",
+    "expected_item_names": ["HUAWEI MateBook B7-410"],
+    "source_doc": "HUAWEI MateBook B7-410 用户手册-(02,zh-cn,MachDZ).pdf"
+  },
+  {
+    "question": "H3C NR-1200W 路由器如何设置家长控制？",
+    "ground_truth_context": "H3C NR-1200W 路由器家长控制：在 Web 管理界面进入「安全设置」→「家长控制」，启用后添加需要管控的终端设备 MAC 地址，设置允许上网的时间段和星期，可选择禁止特定网站类别。支持对不同终端设置不同的控制策略。",
+    "ground_truth_answer": "在 Web 管理进入「安全设置→家长控制」，添加终端 MAC 地址，设置允许时间和网站限制，不同终端可设不同策略。",
+    "expected_item_names": ["H3C NR-1200W企业级无线宽带路由器"],
+    "source_doc": "H3C NR-1200W企业级无线宽带路由器 用户手册-5W100-整本手册.pdf"
+  },
+  {
+    "question": "HAK 180 烫金机的尺寸和重量是多少？",
+    "ground_truth_context": "HAK 180 烫金机的外形尺寸：398mm×504mm×356mm（不含包装），重量约 16.3kg。含包装尺寸：509mm×822mm×509mm，含包装重量约 16.1kg。",
+    "ground_truth_answer": "不含包装 398×504×356mm，约 16.3kg。含包装 509×822×509mm，约 16.1kg。",
+    "expected_item_names": ["HAK 180 烫金机"],
+    "source_doc": "hak180使用说明书.pdf"
+  },
+  {
+    "question": "H3C ER2100 路由器如何备份配置文件？",
+    "ground_truth_context": "H3C ER2100 路由器配置备份：在 Web 管理界面进入「系统管理」→「配置文件管理」，点击「备份配置文件」，系统会下载一个 .cfg 文件到本地。恢复时选择该文件上传即可。建议在每次配置变更后备份。",
+    "ground_truth_answer": "在 Web 管理「系统管理→配置文件管理」点击「备份」，下载 .cfg 文件。恢复时上传该文件即可。",
+    "expected_item_names": ["H3C ER2100 企业级路由器"],
+    "source_doc": "H3C ER2100企业级路由器 用户手册-6W104-整本手册.pdf"
+  },
+  {
+    "question": "HUAWEI MateStation B515 支持的显示器分辨率是多少？",
+    "ground_truth_context": "HUAWEI MateStation B515 通过 HDMI 接口支持最大 4096×2160@30Hz（4K）分辨率输出，通过 VGA 接口支持最大 1920×1080@60Hz。支持双屏显示扩展模式。",
+    "ground_truth_answer": "HDMI 支持 4K（4096×2160@30Hz），VGA 支持 1080P（1920×1080@60Hz），支持双屏扩展。",
+    "expected_item_names": ["HUAWEI MateStation B515"],
+    "source_doc": "HUAWEI MateStation B515 用户手册-(PanguL,Windows11_02,zh-cn).pdf"
+  },
+  {
+    "question": "H3C UG 系列路由器如何配置 DHCP 服务器？",
+    "ground_truth_context": "H3C UG 系列路由器 DHCP 服务器配置：在 Web 管理界面「网络配置」→「DHCP 服务器」，启用 DHCP 功能，设置 IP 地址池范围（如 192.168.1.100-200）、子网掩码、网关地址、DNS 服务器地址、租约时间。",
+    "ground_truth_answer": "在 Web 管理「网络配置→DHCP 服务器」启用，设置地址池范围、子网掩码、网关、DNS 和租约时间。",
+    "expected_item_names": ["H3C UG系列路由器"],
+    "source_doc": "H3C UG系列路由器 用户手册-R0130-6W102-整本手册.pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B5-420 的 USB-C 接口支持哪些功能？",
+    "ground_truth_context": "HUAWEI MateBook B5-420 的两个 USB-C 接口均支持：数据传输（USB 3.2 Gen1）、65W 充电输入、DisplayPort 视频输出。可通过 USB-C 扩展坞外接显示器和多种外设。",
+    "ground_truth_answer": "支持 USB 3.2 数据传输、65W 充电、DisplayPort 视频输出，可通过扩展坞外接显示器和外设。",
+    "expected_item_names": ["HUAWEI MateBook B5-420"],
+    "source_doc": "HUAWEI MateBook B5-420 用户手册-(05,zh-cn,KLV&KLVC&KLCZ).pdf"
+  },
+  {
+    "question": "CS2610DNW 打印机支持哪些纸张类型？",
+    "ground_truth_context": "CS2610DNW 打印机支持多种纸张类型：普通纸、再生纸、信封、标签纸、厚纸（106-220g/m²）、铜版纸、胶片。标准进纸盒容量 250 页，手动进纸槽支持单页厚纸。",
+    "ground_truth_answer": "支持普通纸、再生纸、信封、标签、厚纸（106-220g/m²）、铜版纸、胶片。进纸盒 250 页，手动槽支持厚纸。",
+    "expected_item_names": ["CS2610DNW 打印机"],
+    "source_doc": "CS2610DNW_Manuals_ALL_20240423095554.pdf"
+  },
+  {
+    "question": "HAK 180 烫金机如何使用 Favorite 快捷键调用已保存设置？",
+    "ground_truth_context": "HAK 180 烫金机的 Favorite1 和 Favorite2 快捷键可以快速调用已保存的打印设置。直接按 Favorite1 或 Favorite2 键，LCD 上会显示已保存的设置名称 [#01] 或 [#02]，按 OK 即可加载。",
+    "ground_truth_answer": "直接按 Favorite1 或 Favorite2 键，LCD 显示已保存的设置，按 OK 加载即可。",
+    "expected_item_names": ["HAK 180 烫金机"],
+    "source_doc": "hak180使用说明书.pdf"
+  },
+  {
+    "question": "H3C MER 系列路由器如何查看系统日志？",
+    "ground_truth_context": "H3C MER 系列路由器系统日志查看：在 Web 管理界面进入「系统管理」→「系统日志」，可查看设备的运行日志、告警日志和安全日志。支持按时间范围过滤、日志级别筛选（紧急/告警/通知/调试），支持导出日志文件。",
+    "ground_truth_answer": "在 Web 管理「系统管理→系统日志」查看，支持按时间和级别过滤，可导出日志文件。",
+    "expected_item_names": ["H3C MER系列路由器"],
+    "source_doc": "H3C MER系列路由器 用户手册-R0821-6W105-整本手册.pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B3-430 的处理器是什么型号？",
+    "ground_truth_context": "HUAWEI MateBook B3-430 搭载第 12 代 Intel Core i5-1240P 或 i7-1260P 处理器，12 核 16 线程（4 性能核 + 8 能效核），最大睿频 4.7GHz。集成 Intel Iris Xe 显卡。",
+    "ground_truth_answer": "第 12 代 Intel Core i5-1240P 或 i7-1260P，12 核 16 线程，最大 4.7GHz，集成 Iris Xe 显卡。",
+    "expected_item_names": ["HUAWEI MateBook B3-430"],
+    "source_doc": "HUAWEI MateBook B3-430 用户指南-(NFZ,Windows11_02,zh-cn).pdf"
+  },
+  {
+    "question": "HAK 180 烫金机如何调整打印浓度？",
+    "ground_truth_context": "HAK 180 烫金机打印浓度调整：按 Menu 键进入菜单，使用方向键找到「打印浓度」选项，按 OK 进入，使用 +/- 键调整浓度级别（1-5 级，默认 3 级），按 OK 确认，按 Stop/Exit 退出。",
+    "ground_truth_answer": "按 Menu → 打印浓度 → OK，使用 +/- 键调整 1-5 级（默认 3），按 OK 确认退出。",
+    "expected_item_names": ["HAK 180 烫金机"],
+    "source_doc": "hak180使用说明书.pdf"
+  },
+  {
+    "question": "H3C MSR 系列路由器支持哪些 VPN 类型？",
+    "ground_truth_context": "H3C MSR 系列路由器支持丰富的 VPN 类型：IPsec VPN、L2TP VPN、PPTP VPN、SSL VPN、GRE over IPsec、MPLS VPN。支持加密算法包括 AES-128/256、3DES、SM1/SM2/SM3/SM4 国密算法。",
+    "ground_truth_answer": "支持 IPsec、L2TP、PPTP、SSL、GRE over IPsec、MPLS VPN，支持 AES、3DES、国密 SM1/SM2/SM3/SM4。",
+    "expected_item_names": ["H3C MSR系列开放多业务路由器"],
+    "source_doc": "H3C MSR系列开放多业务路由器 Web配置指导(V7)-R6728-6W102-整本手册.pdf"
+  },
+  {
+    "question": "HUAWEI Matestation B520 支持的内存最大容量是多少？",
+    "ground_truth_context": "HUAWEI MateStation B520 支持双通道 DDR4 3200MHz 内存，最大容量 64GB（2×32GB）。有两个 SO-DIMM 插槽，用户可自行更换或升级内存。",
+    "ground_truth_answer": "双通道 DDR4 3200MHz，最大 64GB（2×32GB），两个 SO-DIMM 插槽支持自行升级。",
+    "expected_item_names": ["HUAWEI Matestation B520"],
+    "source_doc": "HUAWEI Matestation B520 用户手册-(PanguBZ,Windows11_02,zh-cn).pdf"
+  },
+  {
+    "question": "HL-3040 打印机如何恢复出厂设置？",
+    "ground_truth_context": "HL-3040 打印机恢复出厂设置：在打印机面板上按 Menu 键进入菜单，选择「常规设置」→「重置」→「恢复出厂设置」，按 OK 确认。或者关机状态下按住 Go 键同时开机，直到所有 LED 亮起后松开。",
+    "ground_truth_answer": "按 Menu → 常规设置 → 重置 → 恢复出厂设置，或关机按住 Go 键开机直到 LED 亮起。",
+    "expected_item_names": ["HL-3040 打印机"],
+    "source_doc": "hl3040网络说明书.pdf"
+  },
+  {
+    "question": "H3C LA2608 无线网关支持 PoE 供电吗？",
+    "ground_truth_context": "H3C LA2608 室内无线网关支持 802.3af/at PoE 供电标准，可通过 PoE 交换机或 PoE 供电模块直接供电，无需单独连接电源适配器。也支持标配的 12V DC 电源适配器供电。",
+    "ground_truth_answer": "支持 802.3af/at PoE 供电和 12V DC 电源适配器两种供电方式。",
+    "expected_item_names": ["H3C LA2608 室内无线网关"],
+    "source_doc": "H3C LA2608室内无线网关 用户手册-6W100-整本手册.pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B7-410 的键盘有什么特点？",
+    "ground_truth_context": "HUAWEI MateBook B7-410 配备全尺寸背光键盘，键程 1.5mm，支持三级背光调节。键盘具有防泼溅设计，Fn 键可配合 F1-F12 功能键使用。触控板支持多点触控手势。",
+    "ground_truth_answer": "全尺寸背光键盘，1.5mm 键程，三级背光调节，防泼溅设计，Fn 组合 F1-F12 功能键。",
+    "expected_item_names": ["HUAWEI MateBook B7-410"],
+    "source_doc": "HUAWEI MateBook B7-410 用户手册-(02,zh-cn,MachDZ).pdf"
+  },
+  {
+    "question": "H3C NER214W 路由器支持多少个 SSID？",
+    "ground_truth_context": "H3C NER214W 路由器支持多 SSID 功能，2.4GHz 和 5GHz 频段各支持 4 个 SSID，共 8 个 SSID。每个 SSID 可独立设置加密方式、VLAN 归属和客户端隔离策略。",
+    "ground_truth_answer": "2.4GHz 和 5GHz 频段各 4 个 SSID，共 8 个，每个可独立设置加密、VLAN 和客户端隔离。",
+    "expected_item_names": ["H3C NER214W 路由器"],
+    "source_doc": "H3C NER214W路由器 用户手册-6W101-整本手册.pdf"
+  },
+  {
+    "question": "HUAWEI MateStation S 12代酷睿版支持 M.2 硬盘扩展吗？",
+    "ground_truth_context": "HUAWEI MateStation S 12代酷睿版内部提供一个 M.2 2280 PCIe 4.0×4 接口，标配已安装 512GB/1TB SSD。另有一个 2.5 英寸 SATA 硬盘位可用于扩展存储。",
+    "ground_truth_answer": "内置 M.2 2280 PCIe 4.0×4（标配 512GB/1TB SSD），另有 2.5 英寸 SATA 硬盘位可扩展。",
+    "expected_item_names": ["HUAWEI MateStation S 12代酷睿版"],
+    "source_doc": "HUAWEI MateStation S 12代酷睿版 用户指南-(PUC,Windows11_02,zh-cn).pdf"
+  },
+  {
+    "question": "HAK 180 烫金机的工作环境温湿度要求是什么？",
+    "ground_truth_context": "HAK 180 烫金机的工作环境要求：温度 10°C~32°C，湿度 20%~80% RH。存放环境：温度 0°C~40°C，湿度 10%~95% RH。建议放置在通风良好的平坦表面，避免阳光直射。",
+    "ground_truth_answer": "工作：10-32°C，20-80% RH。存放：0-40°C，10-95% RH。需通风良好平坦表面，避免阳光直射。",
+    "expected_item_names": ["HAK 180 烫金机"],
+    "source_doc": "hak180使用说明书.pdf"
+  }
+]
