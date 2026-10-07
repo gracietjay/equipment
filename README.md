@@ -1,233 +1,269 @@
-# equipment_RAG 知识库系统
+# 设备手册知识库问答助手
 
-基于 LangGraph 构建的企业级多模态 RAG（Retrieval-Augmented Generation）知识库系统，支持 多模态 文档的自动化导入、向量化存储，以及多路检索增强生成的智能问答。
+面向设备手册中参数分散、图文信息难以检索、操作步骤查询不便等问题，构建基于 LangGraph 的 RAG 问答系统。
 
-## 核心功能
+系统支持设备文档解析、图文内容整理、混合检索、HyDE 查询扩展、联网搜索和多轮问答，可用于设备功能咨询、使用指导与故障排查。
 
-### 知识导入
-- **多模态(pdf等)文件上传**：通过 Web 界面上传文档，自动解析处理
-- **转 Markdown**：集成 MinerU 服务，将 文件 精准转换为 Markdown 格式，后续进行数据清洗
-- **图片处理**：自动提取文档中的图片并上传至 MinIO 对象存储
-- **文档智能分块**：支持多种分块策略，适配不同模型上下文窗口
-- **实体名称识别**：自动从文档中提取核心产品/实体名称
-- **BGE-M3 向量化**：使用 BGE-M3 模型生成文本向量表示
-- **Milvus 向量入库**：将向量数据持久化存储至 Milvus 向量数据库
+本项目基于已有实现进行二次开发，重点关注检索效果评测、上下文管理和工作流可靠性。
 
-### 智能检索
-- **多路检索融合**：向量搜索 + HyDE 假设文档搜索 + 知识图谱查询 + Web 搜索四路并行
-- **RRF 融合排序**：对多路检索结果进行倒数排列融合
-- **BGE-Reranker 重排序**：对候选文档进行精细重排，提升相关性
-- **MongoDB 实体锚定**：实体名称确认，问题重写与加速检索
-- **Redis 语义缓存**：基于语义相似度的缓存命中，减少重复 LLM 调用
-- **Ragas 评估框架**：集成 ContextPrecision / ContextRecall / ResponseRelevancy / Faithfulness 评估
-- **流式 SSE 输出**：支持 Server-Sent Events 流式返回答案
+## 功能概览
 
-## 技术架构
+- **文档入库**：支持 PDF 和 Markdown 处理，使用 MinerU 解析 PDF，结合视觉模型生成图片语义摘要。
+- **结构化切分**：按照标题层级组织片段，对过长内容二次切分，并合并部分短片段。
+- **设备识别**：根据文档标题及正文识别设备名称，为切片添加设备元数据。
+- **混合检索**：使用 BGE-M3 生成稠密与稀疏向量，在 Milvus 中执行混合检索。
+- **HyDE 查询扩展**：生成假设文档，与改写后的问题组合，补充本地召回。
+- **融合与精排**：本地两路召回经 RRF 融合后，与联网搜索结果一起进入 BGE-Reranker，结合动态 Top-K 筛选证据。
+- **联网搜索**：通过 MCP 客户端调用阿里云百炼 WebSearch 服务。
+- **会话记忆**：使用 MongoDB 保存对话，提供 Redis 摘要存储、相关性判断及检索快路径。
+- **流式输出**：通过 SSE 返回生成内容和节点执行进度。
+- **质量评估**：包含检索、生成评估及人工审核记录模块，部分执行闭环仍待完善。
 
-```
-app/
-├── import_process/        # 知识导入服务 (端口 8000)
-│   ├── agent/             # LangGraph 导入工作流
-│   │   ├── main_graph.py  # 导入流程编排（节点注册 + 边 + 条件路由）
-│   │   ├── nodes/         # 各业务节点实现
-│   │   │   ├── node_entry.py                # 入口：参数初始化、输入校验
-│   │   │   ├── node_pdf_to_md.py            # 解析为 Markdown
-│   │   │   ├── node_md_img.py               # 图片提取与上传
-│   │   │   ├── node_document_split.py       # 文档分块
-│   │   │   ├── node_item_name_recognition.py # 实体名称识别
-│   │   │   ├── node_bge_embedding.py        # BGE-M3 向量化
-│   │   │   └── node_import_milvus.py        # 向量写入 Milvus
-│   │   └── state.py        # 导入流程状态定义
-│   └── api/                # FastAPI 接口
-├── query_process/          # 知识查询服务 (端口 8001)
-│   ├── agent/              # LangGraph 查询工作流
-│   │   ├── main_graph.py   # 查询流程编排（多路搜索 + RRF + Rerank + 评估）
-│   │   ├── nodes/          # 各业务节点实现
-│   │   │   ├── node_cache_check.py          # Redis 语义缓存检查
-│   │   │   ├── node_item_name_confirm.py     # 商品/实体名称确认
-│   │   │   ├── node_search_embedding.py      # 密集向量检索
-│   │   │   ├── node_search_embedding_hyde.py # HyDE 假设文档检索
-│   │   │   ├── node_query_kg.py              # 知识图谱查询
-│   │   │   ├── node_web_search_mcp.py        # Web 搜索 (MCP)
-│   │   │   ├── node_rrf.py                   # RRF 融合排序
-│   │   │   ├── node_rerank.py                # BGE-Reranker 重排
-│   │   │   ├── node_eval_retrieval.py        # 检索质量评估
-│   │   │   ├── node_eval_generation.py       # 生成质量评估
-│   │   │   └── node_answer_output.py         # 答案生成与输出
-│   │   └── state.py         # 查询流程状态定义
-│   └── api/                 # FastAPI 接口
-├── clients/                 # 外部服务客户端
-│   ├── milvus_utils.py      # Milvus 向量数据库
-│   ├── minio_utils.py       # MinIO 对象存储
-│   ├── mongo_history_utils.py # MongoDB 对话历史
-│   ├── redis_utils.py       # Redis 缓存
-│   └── neo4j_utils.py       # Neo4j 知识图谱
-├── conf/                    # 配置管理
-│   ├── embedding_config.py  # BGE-M3 Embedding 配置
-│   ├── reranker_config.py   # BGE-Reranker 配置
-│   ├── lm_config.py         # LLM 模型配置
-│   ├── milvus_config.py     # Milvus 配置
-│   ├── minio_config.py      # MinIO 配置
-│   ├── redis_config.py      # Redis 配置
-│   ├── mineru_config.py     # MinerU PDF 解析配置
-│   └── bailian_mcp_config.py # 百炼 MCP Web 搜索配置
-├── compression/             # 上下文压缩
-├── eval/                    # Ragas 评估 + 中断机制
-├── lm/                      # LLM / Embedding / Reranker 工具
-├── tool/                    # 模型下载工具
-└── utils/                   # 通用工具函数
+## 技术栈
+
+| 类别 | 技术 |
+|---|---|
+| 开发语言 | Python |
+| API 服务 | FastAPI |
+| 工作流编排 | LangGraph |
+| 模型调用与消息封装 | LangChain |
+| 文档解析 | MinerU |
+| 向量化 | BGE-M3 |
+| 重排序 | BGE-Reranker |
+| 向量数据库 | Milvus |
+| 会话记录 | MongoDB |
+| 摘要缓存 | Redis |
+| 文件与图片存储 | MinIO |
+| 模型与外部搜索 | 阿里云百炼、MCP |
+| 评估 | Ragas 及自定义近似评估 |
+
+模型名称与服务连接信息通过环境变量配置。BGE-M3 和重排序模型支持使用本地模型文件。
+
+## 系统架构
+
+项目包含两个 FastAPI 应用：
+
+| 应用 | 职责 | 默认端口 |
+|---|---|---|
+| 文件导入服务 | 接收文档并执行入库流程 | 8000 |
+| 查询服务 | 接收问题、执行检索问答并返回结果 | 8001 |
+
+### 文档入库
+
+```text
+PDF / Markdown
+       ↓
+PDF 解析为 Markdown（按输入类型执行）
+       ↓
+图片提取与语义摘要
+       ↓
+标题层级切分
+       ↓
+设备名称识别
+       ↓
+BGE-M3 稠密、稀疏向量生成
+       ↓
+Milvus 入库
 ```
 
-## 依赖服务
+图片理解主要发生在入库阶段：系统将图片内容转换为文字摘要，供后续文本检索使用。
 
-本项目依赖以下外部服务，运行前请确保相关服务已就绪：
+### 普通问答路径
 
-| 服务 | 用途 | 默认端口 |
-|------|------|---------|
-| **Milvus** | 向量数据库，存储文档向量 | 19530 |
-| **MinIO** | 对象存储，存放文档图片 | 9000 |
-| **Redis** | 语义缓存，存储会话摘要 | 6379 |
-| **MongoDB** | 文档数据库，存储对话历史 | 27017 |
-| **MinerU** | PDF 解析服务 | — |
-| **LLM API** | OpenAI 兼容 API，大模型推理 | — |
-| **百炼 MCP** | 阿里百炼 Web 搜索服务 | — |
+```text
+用户问题
+   ↓
+会话摘要检查
+   ↓ 未命中
+历史读取、问题改写与设备确认
+   ↓
+┌────────────────────┬────────────────────┐
+│ 直接查询混合检索    │ HyDE 查询混合检索  │
+└────────────────────┴────────────────────┘
+                     ↓
+                  RRF 融合
+                     ↓
+           与 MCP 网页结果合并
+                     ↓
+        BGE-Reranker + 动态 Top-K
+                     ↓
+                  检索评估
+                     ↓
+               回答生成与输出
+                     ↓
+                  生成评估
+```
 
-## 本地模型
+MCP 搜索在多路检索分支中并行执行。网页结果不参与当前的 RRF 融合，而是在重排序阶段加入。
 
-项目使用以下开源模型，运行前需下载至本地或 GPU 服务器：
+### 摘要命中路径
 
-- **BGE-M3**：文本 Embedding 模型，用于文档向量化
-- **BGE-Reranker-v2-m3**：交叉编码器重排序模型，用于精细排序
-- **VL Model**：多模态视觉语言模型（可选，用于图片理解）
+```text
+用户问题
+   ↓
+匹配当前会话的 Redis 摘要
+   ↓ 命中
+历史摘要 + 当前问题
+   ↓
+设备过滤下的 Milvus 混合检索
+   ↓
+重排序、评估与回答生成
+```
 
-可通过 `app/tool/download_bgem3.py` 和 `app/tool/download_reranker.py` 下载对应模型。
+摘要命中后仍然重新检索和生成答案，不直接返回旧答案。
 
-## 环境配置
+该路径跳过 HyDE、MCP 和 RRF。其效果和耗时收益需要通过对比测试确认。
 
-1. 在项目根目录创建 `.env` 文件，参考以下配置项（这些服务你要后台启动，有一些你要去申请api-key才能使用）：
+## 数据存储分工
+
+| 存储 | 内容 |
+|---|---|
+| Milvus | 手册切片、设备及来源元数据、稠密和稀疏向量 |
+| MongoDB | 用户问题、模型回答、设备名称、改写问题和时间 |
+| Redis | 对话摘要、设备名称、摘要索引和压缩进度 |
+| MinIO | 文档与图片等文件资源 |
+
+Redis 摘要相关性判断在应用代码中进行：读取当前会话摘要后，通过 Embedding、Reranker 及必要时的 LLM 判断相关性。当前没有将这些摘要向量持久化到 Milvus。
+
+## 目录结构
+
+```text
+equipment_RAG/
+├── app/
+│   ├── clients/                 # Milvus、MongoDB、Redis 等客户端封装
+│   ├── compression/             # 摘要生成、缓存管理和相关性判断
+│   ├── conf/                    # 环境变量与配置读取
+│   ├── core/                    # 日志、提示词加载
+│   ├── document/
+│   │   └── eval/                # 评测数据
+│   ├── eval/                    # 检索评估、生成评估和审核记录
+│   ├── import_process/
+│   │   ├── api/                 # 文件导入 API
+│   │   └── agent/               # 入库工作流、状态和节点
+│   ├── lm/                      # 模型加载与调用封装
+│   ├── query_process/
+│   │   ├── api/                 # 问答 API
+│   │   ├── agent/               # 查询工作流、状态和节点
+│   │   └── page/                # 问答页面
+│   ├── tool/                    # 本地模型下载辅助脚本
+│   └── utils/                   # SSE、任务状态等公共功能
+├── prompts/                     # 模型提示词模板
+├── skills/                      # 技能说明文档
+└── README.md
+```
+
+`agent/nodes/` 中的文件是工作流业务节点，不等同于供模型自主选择的 Tool。
+
+`app/tool/` 当前主要存放模型下载脚本。MCP 搜索工具由远程服务提供，本项目通过节点代码调用。
+
+`skills/` 中的说明文档目前未发现运行时自动加载机制。
+
+## 本地运行
+
+### 1. 准备依赖服务
+
+根据需要准备以下服务或资源：
+
+- Milvus
+- MongoDB
+- Redis
+- MinIO
+- MinerU 所需的解析环境
+- BGE-M3 和 BGE-Reranker 模型文件或可用下载环境
+- 可访问的语言模型、视觉模型及百炼 MCP 服务
+
+Python 依赖版本应以项目实际运行环境为准。当前不将未经验证的依赖安装命令作为可复现部署方案。
+
+### 2. 配置环境变量
+
+在项目根目录配置本地 `.env`，主要包括：
+
+- 模型 API 地址、密钥与模型名称。
+- Embedding 和 Reranker 的路径及运行设备。
+- Milvus、MongoDB、Redis、MinIO 连接信息。
+- MinerU 相关配置。
+- MCP 服务地址。
+- 日志和摘要缓存参数。
+
+具体变量名称以 `app/conf/` 和对应客户端模块为准。
+
+不要将包含真实密钥、数据库密码的 `.env` 提交到 GitHub。
+
+### 3. 启动服务
+
+在项目根目录分别打开两个终端：
 
 ```bash
-# ==================== LLM 配置 ====================
-OPENAI_BASE_URL=https://your-llm-api.com/v1
-OPENAI_API_KEY=your-api-key
-LLM_DEFAULT_MODEL=qwen-plus
-LLM_DEFAULT_TEMPERATURE=0.01
-VL_MODEL=qwen-vl-plus
-
-# ==================== BGE-M3 Embedding 配置 ====================
-BGE_M3_PATH=/path/to/bge-m3
-BGE_M3=BAAI/bge-m3
-BGE_DEVICE=cuda:0
-BGE_FP16=1
-
-# ==================== BGE-Reranker 配置 ====================
-BGE_RERANKER_LARGE=/path/to/bge-reranker-v2-m3
-BGE_RERANKER_DEVICE=cuda:0
-BGE_RERANKER_FP16=1
-
-# ==================== Milvus 配置 ====================
-MILVUS_URL=http://localhost:19530
-CHUNKS_COLLECTION=chunks
-ENTITY_NAME_COLLECTION=entity_names
-ITEM_NAME_COLLECTION=item_names
-
-# ==================== MinIO 配置 ====================
-MINIO_ENDPOINT=localhost:9000
-MINIO_ACCESS_KEY=your-access-key
-MINIO_SECRET_KEY=your-secret-key
-MINIO_BUCKET_NAME=knowledge-base
-MINIO_IMG_DIR=images
-MINIO_SECURE=False
-
-# ==================== Redis 配置 ====================
-REDIS_HOST=localhost
-REDIS_PORT=6379
-REDIS_PASSWORD=
-REDIS_DB=0
-REDIS_CACHE_TTL=86400
-CACHE_RELEVANCE_THRESHOLD=0.85
-
-# ==================== MongoDB 配置 ====================
-MONGO_URI=mongodb://localhost:27017
-MONGO_DB=knowledge_base
-
-# ==================== MinerU PDF 解析配置 ====================
-MINERU_BASE_URL=https://your-mineru-api.com
-MINERU_API_TOKEN=your-mineru-token
-
-# ==================== 百炼 MCP 配置 ====================
-MCP_DASHSCOPE_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+python -m uvicorn app.import_process.api.file_import_service:app --host 127.0.0.1 --port 8000
 ```
-
-## 运行指令
-
-### 安装依赖
 
 ```bash
-# 安装 Python 依赖（需要 Python 3.10+）
-pip install fastapi uvicorn langgraph langchain pymilvus minio redis pymongo neo4j python-dotenv ragas dashscope
-pip install transformers torch  # BGE 模型推理
-pip install pymupdf pdfplumber  # PDF 处理相关
+python -m uvicorn app.query_process.api.query_service:app --host 127.0.0.1 --port 8001
 ```
 
-### 启动知识导入服务（端口 8000）
+访问：
 
-```bash
-cd app/import_process/api
-python file_import_service.py
+- 文件导入接口文档：`http://127.0.0.1:8000/docs`
+- 查询接口文档：`http://127.0.0.1:8001/docs`
+- 问答页面：`http://127.0.0.1:8001/chat.html`
+
+首次运行前需确保依赖、配置和外部服务可用。上述启动方式仍需在实际环境完成验证。
+
+## 评测
+
+评测数据位于：
+
+```text
+app/document/eval/test_dataset.json
 ```
 
-启动后访问 `http://127.0.0.1:8000/import.html` 打开文件上传页面，支持上传 PDF / MD 文件进行导入。
+每条用例包含：
 
-### 启动知识查询服务（端口 8001）
+- `question`：用户问题。
+- `ground_truth_context`：参考上下文。
+- `ground_truth_answer`：参考答案。
+- `expected_item_names`：预期设备名称。
+- `source_doc`：来源文档。
 
-```bash
-cd app/query_process/api
-python query_service.py
-```
+数据文件包含这些字段，不代表当前评估代码已经消费全部字段。
 
-启动后访问 `http://127.0.0.1:8001/chat.html` 打开对话页面，输入问题进行智能问答。
+比较检索方案时，应固定数据集、模型版本和知识库版本，并保存每题的召回片段、生成答案、执行状态与指标结果。
 
-### 下载模型（首次运行前执行）
+Ragas 原生评估与自定义近似评估应分别记录，不能混用同一指标口径。README 不展示未经确认的准确率或性能提升数字。
 
-```bash
-# 下载 BGE-M3 Embedding 模型
-python app/tool/download_bgem3.py
+## 当前限制与待完善事项
 
-# 下载 BGE-Reranker 重排序模型
-python app/tool/download_reranker.py
-```
+以下限制依据当前代码检查整理，尚未通过完整的运行测试逐项验证：
 
-### API 接口
+1. **Neo4j 未实际实现**
+   当前仅有连接封装和图谱占位节点，没有图谱构建、关系查询或结果参与回答的完整实现。
 
-**知识导入服务** (`http://127.0.0.1:8000`):
-- `GET /import.html` — 文件上传 Web 页面
-- `POST /upload` — 上传 文件触发导入流程
-- `GET /tasks` — 查看任务列表与状态
-- `GET /docs` — Swagger API 文档
+2. **自动摘要触发链路存在缺口**
+   已有首次 5 轮、后续每新增 3 轮的压缩规则，但默认入口没有向压缩检查节点传入历史。
 
-**知识查询服务** (`http://127.0.0.1:8001`):
-- `GET /chat.html` — 对话 Web 页面
-- `POST /query` — 提交问题查询（支持流式 SSE）
+3. **历史读取顺序需要修正**
+   历史查询当前按时间升序后限制数量，消息较多时会取到最早的记录，而非最近记录。
 
+4. **人工审核尚未形成完整闭环**
+   审核记录和状态更新已有实现，但审核后自动恢复工作流尚未接通。生成评估发生在流式答案输出之后，不能作为发布前拦截。
 
-## 工作流程
+5. **评测口径与异常状态需要完善**
+   存在评测数据路径不一致、跳过评估标记为通过，以及原生评估失败后使用近似算法等情况。
 
-### 导入流程
+6. **文档更新存在数据替换风险**
+   当前按设备名称清理旧切片后插入新数据。同型号多份手册的共存、版本管理和失败恢复需要进一步完善。
 
-```
-文件上传 → 入口校验 → [转MD] → 图片处理 → 文档分块
-→ 实体名称识别 → BGE-M3向量化 → 导入Milvus → 完成
-```
+7. **运行状态主要保存在进程内存中**
+   任务状态、审核记录和 SSE 队列尚未形成支持重启恢复、多进程共享的完整方案。
 
-### 查询流程
+8. **没有独立的闲聊路由**
+   问候性输入也会进入缓存检查及后续设备识别流程。
 
-```
-用户提问 → Redis缓存检查 → 实体名称确认 → 多路并行搜索
-    ├─ 向量搜索 (Dense Retrieval)
-    ├─ HyDE 搜索 (假设文档向量)
-    └─ Web 搜索 (MCP)
-→ RRF 融合排序 → BGE-Reranker 重排 → Ragas 检索评估
-→ LLM 答案生成 → Eva 生成评估 → 流式输出答案
-```
+## 后续优化方向
 
+- 修正评测路径、指标口径及失败状态。
+- 完成人工审核暂停、恢复与答案发布控制。
+- 接通历史摘要触发流程，修正近期消息查询。
+- 对比不同检索路径的质量、延迟和调用成本。
+- 完善文档版本管理及更新失败保护。
+- 清理未实现能力的占位代码和过时说明。
