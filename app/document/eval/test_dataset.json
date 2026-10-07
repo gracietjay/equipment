@@ -488,5 +488,215 @@
     "ground_truth_answer": "工作：10-32°C，20-80% RH。存放：0-40°C，10-95% RH。需通风良好平坦表面，避免阳光直射。",
     "expected_item_names": ["HAK 180 烫金机"],
     "source_doc": "hak180使用说明书.pdf"
+  },
+  {
+    "question": "H3C ER2100 路由器在运营商绑定 MAC 地址时，如何配置 WAN 口 MAC 地址克隆？",
+    "ground_truth_context": "部分运营商要求使用已注册的 MAC 地址接入网络。ER2100 在“接口设置→WAN设置→MAC地址克隆”中，可选择使用本设备的 MAC 地址、使用管理计算机的 MAC 地址，或手工输入已在运营商侧注册的 MAC 地址。更换 MAC 地址会使 WAN 口重新初始化；可在基本信息页面查看 MAC 地址确认生效。",
+    "ground_truth_answer": "进入“接口设置→WAN设置→MAC地址克隆”，选择管理计算机的 MAC 地址或手工输入运营商已注册的 MAC 地址；等待 WAN 口重新初始化后，在基本信息页面核对。",
+    "expected_item_names": ["H3C ER2100 企业级路由器"],
+    "source_doc": "H3C ER2100企业级路由器 用户手册-6W104-整本手册.pdf"
+  },
+  {
+    "question": "H3C ER2100 路由器如何设置本地端口镜像并确认是否生效？",
+    "ground_truth_context": "ER2100 的本地端口镜像设置入口为“端口管理→端口配置→端口镜像”。通过设置镜像源端口和镜像目的端口实现本地端口镜像；设置后可查看端口流量页面中的“端口镜像信息”验证是否生效。",
+    "ground_truth_answer": "进入“端口管理→端口配置→端口镜像”，设置镜像源端口和目的端口，再到端口流量页面查看“端口镜像信息”。",
+    "expected_item_names": ["H3C ER2100 企业级路由器"],
+    "source_doc": "H3C ER2100企业级路由器 用户手册-6W104-整本手册.pdf"
+  },
+  {
+    "question": "H3C ER2100 同时配置 DHCP 静态表与 ARP 绑定时，怎样避免客户端无法上网？",
+    "ground_truth_context": "ER2100 通过 DHCP 分配 IP 地址且同时设置 ARP 绑定时，应确保 DHCP 静态表项与 ARP 绑定表项不冲突，否则对应客户端可能无法上网。手册建议导出 ARP 绑定表，再将其导入 DHCP 静态表。",
+    "ground_truth_answer": "确保 DHCP 静态表与 ARP 绑定表中的对应关系一致；可将 ARP 绑定表导出后导入 DHCP 静态表，避免表项冲突。",
+    "expected_item_names": ["H3C ER2100 企业级路由器"],
+    "source_doc": "H3C ER2100企业级路由器 用户手册-6W104-整本手册.pdf"
+  },
+  {
+    "question": "H3C ER2100 对同一 IP 在同一接口配置多条限速规则时，哪条规则生效？",
+    "ground_truth_context": "ER2100 对相同的单个 IP 地址或 IP 地址网段，在同一个限速接口上配置限速时，先添加的限速规则生效。例如，先设置某用户 WAN 口限速为 300Kbps，后设置为 400Kbps，生效的是先添加的 300Kbps 规则。",
+    "ground_truth_answer": "先添加的规则生效。例如先添加 300Kbps、后添加 400Kbps，同一 IP 在同一接口上的生效限速为 300Kbps。",
+    "expected_item_names": ["H3C ER2100 企业级路由器"],
+    "source_doc": "H3C ER2100企业级路由器 用户手册-6W104-整本手册.pdf"
+  },
+  {
+    "question": "H3C ER2100 如何限制指定 IP 范围内每台主机的最大网络连接数？",
+    "ground_truth_context": "ER2100 的网络连接限数入口为“QoS设置→连接限制→网络连接限数”。选中“启用网络连接限数”并单击“应用”开启功能，再单击“新增”，设置指定 IP 地址范围内每台主机同时发起的最大网络连接数，单击“增加”完成配置。",
+    "ground_truth_answer": "进入“QoS设置→连接限制→网络连接限数”，启用并应用；新增规则，设置 IP 范围和每台主机的最大连接数，点击“增加”。",
+    "expected_item_names": ["H3C ER2100 企业级路由器"],
+    "source_doc": "H3C ER2100企业级路由器 用户手册-6W104-整本手册.pdf"
+  },
+  {
+    "question": "H3C NER214W 如何添加静态 DNS 域名与 IP 地址映射？",
+    "ground_truth_context": "NER214W 支持静态 DNS Server，通过手动指定域名和 IP 对应关系实现域名解析。在“高级设置→应用服务→DNS Server”中单击“新增”，设置服务器域名、IP 及描述信息，再单击“增加”生效。",
+    "ground_truth_answer": "进入“高级设置→应用服务→DNS Server”，点击“新增”，填写域名、IP 地址及描述，点击“增加”。",
+    "expected_item_names": ["H3C NER214W 路由器"],
+    "source_doc": "H3C NER214W路由器 用户手册-6W101-整本手册.pdf"
+  },
+  {
+    "question": "H3C NER214W 因管理 IP 范围设置错误导致自己无法登录时，如何恢复访问？",
+    "ground_truth_context": "NER214W 如果因误操作未将自身 IP 划入允许管理路由器的用户 IP 范围而无法登录，可通过 Console 下的 admin acl default 命令恢复缺省访问设置。缺省情况下允许局域网内所有用户访问路由器。",
+    "ground_truth_answer": "通过 Console 执行 admin acl default，恢复为允许局域网内所有用户访问路由器的缺省设置。",
+    "expected_item_names": ["H3C NER214W 路由器"],
+    "source_doc": "H3C NER214W路由器 用户手册-6W101-整本手册.pdf"
+  },
+  {
+    "question": "H3C NER214W 的 WAN 链路状态显示“线路检测失败”是什么意思，还能转发报文吗？",
+    "ground_truth_context": "NER214W 基本信息中的 WAN 链路状态为“线路检测失败”时，表示 WAN 口检测没有成功，此时 WAN 口不能转发任何报文。",
+    "ground_truth_answer": "表示 WAN 口检测未成功，此时该 WAN 口不能转发任何报文。",
+    "expected_item_names": ["H3C NER214W 路由器"],
+    "source_doc": "H3C NER214W路由器 用户手册-6W101-整本手册.pdf"
+  },
+  {
+    "question": "H3C NER214W 在哪里查看端口流量，默认统计刷新周期和显示模式是什么？",
+    "ground_truth_context": "NER214W 可在“系统监控→流量监控→端口流量”查看端口发送和接收流量、速率及链路状态。统计周期缺省为 10 秒，查看模式缺省为比特模式；选中“自动刷新”后，页面数据按统计周期自动刷新。",
+    "ground_truth_answer": "进入“系统监控→流量监控→端口流量”；默认统计周期为 10 秒，默认比特模式，勾选“自动刷新”后按周期刷新。",
+    "expected_item_names": ["H3C NER214W 路由器"],
+    "source_doc": "H3C NER214W路由器 用户手册-6W101-整本手册.pdf"
+  },
+  {
+    "question": "H3C NER214W 的内网 IP 流量统计默认开启吗，如何启用？",
+    "ground_truth_context": "NER214W 的 IP 流量统计缺省关闭。在“系统监控→流量监控→IP流量”中选中“启用内网IP流量统计”，单击“应用”生效，可查看局域网在线主机经 WAN 口的流量、速率及网络连接数。",
+    "ground_truth_answer": "默认关闭。进入“系统监控→流量监控→IP流量”，勾选“启用内网IP流量统计”，点击“应用”。",
+    "expected_item_names": ["H3C NER214W 路由器"],
+    "source_doc": "H3C NER214W路由器 用户手册-6W101-整本手册.pdf"
+  },
+  {
+    "question": "H3C NR-1200W 手工设置的系统时间在重启后会保留吗？",
+    "ground_truth_context": "NR-1200W 手工设置的系统时间不会与其他设备同步，也不支持时区切换。路由器重启后，手工设置时间丢失，并恢复为通过 NTP 服务器自动获取时间；连接因特网后可从缺省 NTP 服务器获取时间。",
+    "ground_truth_answer": "不会保留。重启后手工时间丢失，恢复为 NTP 自动校时；联网后可从缺省 NTP 服务器获取时间。",
+    "expected_item_names": ["H3C NR-1200W企业级无线宽带路由器"],
+    "source_doc": "H3C NR-1200W企业级无线宽带路由器 用户手册-5W100-整本手册.pdf"
+  },
+  {
+    "question": "H3C NR-1200W 软件升级前和升级过程中需要注意什么，如何核对升级后的版本？",
+    "ground_truth_context": "NR-1200W 软件升级前应备份当前配置，升级过程中不能断电，否则可能导致设备不能正常工作。升级成功后设备会重启，可在基本信息页面查看“软件版本”验证当前版本。",
+    "ground_truth_answer": "升级前备份配置，升级中保持供电；升级成功后设备自动重启，再到基本信息页面核对“软件版本”。",
+    "expected_item_names": ["H3C NR-1200W企业级无线宽带路由器"],
+    "source_doc": "H3C NR-1200W企业级无线宽带路由器 用户手册-5W100-整本手册.pdf"
+  },
+  {
+    "question": "H3C NR-1200W 备份到 U 盘的配置文件可以手工编辑后再恢复吗？",
+    "ground_truth_context": "NR-1200W 可将配置以 .cfg 文件备份到 USB 设备。手册要求不要编辑备份在 USB 设备上的配置文件，因为配置文件经过加密，修改后不能再次恢复到路由器中。",
+    "ground_truth_answer": "不可以。USB 备份配置文件经过加密，手工修改后不能恢复到路由器，应保留原始备份文件。",
+    "expected_item_names": ["H3C NR-1200W企业级无线宽带路由器"],
+    "source_doc": "H3C NR-1200W企业级无线宽带路由器 用户手册-5W100-整本手册.pdf"
+  },
+  {
+    "question": "H3C NR-1200W 提供哪两种网络诊断工具，分别检查什么？",
+    "ground_truth_context": "NR-1200W 在“系统监控→网络维护→网络诊断”提供 ping 测试和路由跟踪测试。ping 用于检测路由器与目标主机或设备是否连通；路由跟踪用于检查到目标主机经过的路由。",
+    "ground_truth_answer": "提供 ping 测试和路由跟踪测试，分别检查网络连通性和到目标主机经过的路由；入口为“系统监控→网络维护→网络诊断”。",
+    "expected_item_names": ["H3C NR-1200W企业级无线宽带路由器"],
+    "source_doc": "H3C NR-1200W企业级无线宽带路由器 用户手册-5W100-整本手册.pdf"
+  },
+  {
+    "question": "H3C NR-1200W 如何处理报文源认证失败的数据包，这类计数持续增加可能说明什么？",
+    "ground_truth_context": "NR-1200W 的源认证失败判断依赖报文源认证设置，路由器会直接丢弃源认证失败的报文。如果统计中的此类报文个数不断增加，可能存在 IP 欺骗或 MAC 欺骗攻击行为。",
+    "ground_truth_answer": "直接丢弃源认证失败的报文；这类计数持续增加可能表示网络中存在 IP 欺骗或 MAC 欺骗，并非仅凭计数即可确定攻击。",
+    "expected_item_names": ["H3C NR-1200W企业级无线宽带路由器"],
+    "source_doc": "H3C NR-1200W企业级无线宽带路由器 用户手册-5W100-整本手册.pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B3-430 的充电指示灯白色闪烁和白色常亮分别表示什么？",
+    "ground_truth_context": "MateBook B3-430 充电时通过指示灯显示电池状态：白色闪烁表示正在充电；白色常亮表示电池充满电，停止充电。",
+    "ground_truth_answer": "白色闪烁表示正在充电，白色常亮表示电池已充满并停止充电。",
+    "expected_item_names": ["HUAWEI MateBook B3-430"],
+    "source_doc": "HUAWEI MateBook B3-430 用户指南-(NFZ,Windows11_02,zh-cn).pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B3-430 如何把 F1、F2 等键切换为功能键模式？",
+    "ground_truth_context": "MateBook B3-430 的 F1、F2 等键默认处于快捷键模式。按 Fn 键至指示灯亮起，可锁定为功能键模式，再次按 Fn 至灯灭返回快捷键模式；也可在华为电脑管家设置中心的系统设置中选择“功能键优先”。",
+    "ground_truth_answer": "按 Fn 键至指示灯亮起切换为功能键模式，灯灭时为快捷键模式；也可在电脑管家“设置中心→系统设置”选择“功能键优先”。",
+    "expected_item_names": ["HUAWEI MateBook B3-430"],
+    "source_doc": "HUAWEI MateBook B3-430 用户指南-(NFZ,Windows11_02,zh-cn).pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B3-430 如何用触摸板手势打开多任务视图、显示桌面和切换应用？",
+    "ground_truth_context": "MateBook B3-430 的触摸板三指向上滑动打开多任务视图，三指向下滑动显示桌面，三指左右滑动切换应用。手册提示并非所有手势都可用于所有应用，以实际为准。",
+    "ground_truth_answer": "三指上滑打开多任务视图，下滑显示桌面，左右滑动切换应用；具体应用支持情况以实际为准。",
+    "expected_item_names": ["HUAWEI MateBook B3-430"],
+    "source_doc": "HUAWEI MateBook B3-430 用户指南-(NFZ,Windows11_02,zh-cn).pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B3-430 如何使用 F10 恢复出厂，操作前需要备份哪些数据？",
+    "ground_truth_context": "MateBook B3-430 的 F10 恢复出厂会删除 C 盘数据，包括桌面文件、下载、文档等个人数据，应先备份。连接电源，开机过程中连续快速点按 F10，进入界面后按提示恢复出厂。",
+    "ground_truth_answer": "先备份 C 盘中的桌面、下载、文档等个人数据；连接电源，开机时连续快速点按 F10，再按界面提示恢复。",
+    "expected_item_names": ["HUAWEI MateBook B3-430"],
+    "source_doc": "HUAWEI MateBook B3-430 用户指南-(NFZ,Windows11_02,zh-cn).pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B3-430 如何开启护眼模式，开启后屏幕偏黄正常吗？",
+    "ground_truth_context": "MateBook B3-430 可右键点击桌面空白处，依次选择“显示更多选项→显示管理”，打开护眼模式开关。开启后屏幕显示偏黄是正常现象。",
+    "ground_truth_answer": "右键桌面空白处，选择“显示更多选项→显示管理”并开启护眼模式；开启后屏幕偏黄属于正常现象。",
+    "expected_item_names": ["HUAWEI MateBook B3-430"],
+    "source_doc": "HUAWEI MateBook B3-430 用户指南-(NFZ,Windows11_02,zh-cn).pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B5-420 如何用 Fn 与方向键组合实现 Home、PgUp、PgDn 和 End？",
+    "ground_truth_context": "MateBook B5-420 的 Fn 与方向键组合对应关系为：Fn 加左方向键对应 Home，Fn 加上方向键对应 PgUp，Fn 加下方向键对应 PgDn，Fn 加右方向键对应 End。",
+    "ground_truth_answer": "Fn＋左为 Home，Fn＋上为 PgUp，Fn＋下为 PgDn，Fn＋右为 End。",
+    "expected_item_names": ["HUAWEI MateBook B5-420"],
+    "source_doc": "HUAWEI MateBook B5-420 用户手册-(05,zh-cn,KLV&KLVC&KLCZ).pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B5-420 首次联网后 Windows 激活失败应如何处理？",
+    "ground_truth_context": "MateBook B5-420 首次联网后 Windows 自动激活。如果激活失败，手册建议重启计算机后联网重试；仍无法激活时，更换其他网络服务或等待一段时间后再尝试。",
+    "ground_truth_answer": "先重启电脑并联网重试；仍失败时更换网络，或等待一段时间后再次尝试。",
+    "expected_item_names": ["HUAWEI MateBook B5-420"],
+    "source_doc": "HUAWEI MateBook B5-420 用户手册-(05,zh-cn,KLV&KLVC&KLCZ).pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B5-420 首次开机跳过指纹录入后，如何补录，每个账户最多能录入几组？",
+    "ground_truth_context": "MateBook B5-420 首次开机跳过指纹录入后，可进入设置中的“帐户→登录选项”，先设置登录密码和 PIN 码，再按指引录入指纹。录入时保持手指干净，每个帐户最多录入 10 组指纹。",
+    "ground_truth_answer": "进入设置的“帐户→登录选项”，先设置密码和 PIN，再录入指纹；保持手指干净，每个账户最多录入 10 组。",
+    "expected_item_names": ["HUAWEI MateBook B5-420"],
+    "source_doc": "HUAWEI MateBook B5-420 用户手册-(05,zh-cn,KLV&KLVC&KLCZ).pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B5-420 如何检查并升级驱动？",
+    "ground_truth_context": "MateBook B5-420 的驱动升级方法是打开电脑管家，点击“驱动管理”，检测到待升级驱动后按照指引完成升级。手册建议定期检测驱动版本并及时升级。",
+    "ground_truth_answer": "打开电脑管家，进入“驱动管理”，发现待升级驱动后按提示更新，并定期检查版本。",
+    "expected_item_names": ["HUAWEI MateBook B5-420"],
+    "source_doc": "HUAWEI MateBook B5-420 用户手册-(05,zh-cn,KLV&KLVC&KLCZ).pdf"
+  },
+  {
+    "question": "HUAWEI MateBook B5-420 的华为分享在手机与电脑之间提供哪些协同功能？",
+    "ground_truth_context": "MateBook B5-420 手册将华为分享功能分为多屏协同、文件分享和数据同步。多屏协同可在笔记本上操作手机应用和文件、接听手机音视频通话及拖拽互传文件；文件分享支持碰一碰传文件和摇一摇录制笔记本屏幕；数据同步支持共享剪贴板及手机最近文档同步到笔记本。",
+    "ground_truth_answer": "包括多屏协同、文件分享和数据同步：可操作手机应用及接听通话、互传文件、用手机录制电脑屏幕，并共享剪贴板及同步手机最近文档。",
+    "expected_item_names": ["HUAWEI MateBook B5-420"],
+    "source_doc": "HUAWEI MateBook B5-420 用户手册-(05,zh-cn,KLV&KLVC&KLCZ).pdf"
+  },
+  {
+    "question": "HUAWEI PixLab B5 默认多久无操作会休眠，如何唤醒，能设置永不休眠吗？",
+    "ground_truth_context": "PixLab B5 默认持续 5 分钟无操作后进入休眠，操作面板所有指示灯熄灭。触摸操作面板或收到打印任务时退出休眠。可通过华为电脑管家或华为打印客户端设置休眠时间，但不支持设置永不休眠。",
+    "ground_truth_answer": "默认 5 分钟无操作后休眠，触摸面板或发送打印任务可唤醒；可以调整休眠时间，但不能设置永不休眠。",
+    "expected_item_names": ["HUAWEI PixLab B5"],
+    "source_doc": "HUAWEI PixLab B5 用户指南-(CV81Z,06,zh-cn).pdf"
+  },
+  {
+    "question": "HUAWEI PixLab B5 在什么情况下进入深度休眠，进入后如何唤醒？",
+    "ground_truth_context": "PixLab B5 未联网且没有设备连接时，持续 25 分钟无操作会进入深度休眠。此时 WLAN、蓝牙、LAN 口和 USB-B 接口关闭，无法连接；触摸操作面板可退出深度休眠。",
+    "ground_truth_answer": "未联网、没有设备连接且连续 25 分钟无操作时进入深度休眠；无线功能和 LAN、USB-B 接口关闭，需要触摸操作面板唤醒。",
+    "expected_item_names": ["HUAWEI PixLab B5"],
+    "source_doc": "HUAWEI PixLab B5 用户指南-(CV81Z,06,zh-cn).pdf"
+  },
+  {
+    "question": "HUAWEI PixLab B5 如何通过面板重置网络并进入待配网状态？",
+    "ground_truth_context": "PixLab B5 在开机状态下，长按网络状态键 3 秒以上，直到网络状态键白色闪烁，表示进入待配网状态，之后需要重新配网。",
+    "ground_truth_answer": "开机时长按网络状态键超过 3 秒，待其白色闪烁后松开，打印机进入待配网状态，再重新配置网络。",
+    "expected_item_names": ["HUAWEI PixLab B5"],
+    "source_doc": "HUAWEI PixLab B5 用户指南-(CV81Z,06,zh-cn).pdf"
+  },
+  {
+    "question": "HUAWEI PixLab B5 如何取消当前已经开始打印的任务？",
+    "ground_truth_context": "PixLab B5 的打印任务已下发到打印机后，如果需要中途取消，可长按控制面板上的取消键，直到听到“滴”的一声，即可取消当前打印任务。",
+    "ground_truth_answer": "长按打印机控制面板的取消键，直到听到“滴”的一声，即可取消当前打印任务。",
+    "expected_item_names": ["HUAWEI PixLab B5"],
+    "source_doc": "HUAWEI PixLab B5 用户指南-(CV81Z,06,zh-cn).pdf"
+  },
+  {
+    "question": "HUAWEI PixLab B5 通过 USB 连接华为 Windows 电脑时，为什么电脑管家的固件升级按钮是灰色？",
+    "ground_truth_context": "PixLab B5 通过华为 Windows 电脑的电脑管家进行手动固件升级时，需要通过局域网连接打印机。如果使用 USB 线缆连接，电脑管家打印机卡片中的“固件升级”会置灰，无法手动升级。",
+    "ground_truth_answer": "电脑管家手动升级固件需要局域网连接；USB 连接下按钮置灰，应改用局域网连接后再检查升级。",
+    "expected_item_names": ["HUAWEI PixLab B5"],
+    "source_doc": "HUAWEI PixLab B5 用户指南-(CV81Z,06,zh-cn).pdf"
   }
 ]
